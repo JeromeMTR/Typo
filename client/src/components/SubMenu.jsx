@@ -1,12 +1,14 @@
 import React from 'react';
-import Time from './Time.jsx';
+import TimeSelection from './TimeSelection.jsx';
 import Panel from './Panel.jsx';
 
 const SubMenu = ({ showStats }) => {
   return (
     <div className='submenu'>
-      <Time />
-      <Panel />
+      <TimeSelection />
+      <Panel
+        showStats={ showStats }
+      />
     </div>
   );
 };

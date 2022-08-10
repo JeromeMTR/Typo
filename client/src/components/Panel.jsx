@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
-const Panel = () => {
+const Panel = ({ seconds, showStats }) => {
+  const [countDown, setCountDown] = useState(60);
+
+
+
   return (
-    <div>Panel</div>
+    <div>
+      <span onClick={ showStats }>Go to Stats</span>
+      <span>{ countDown }</span>
+    </div>
   );
 };
 

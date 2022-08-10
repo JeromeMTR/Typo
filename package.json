@@ -26,6 +26,7 @@
     "express": "^4.18.1",
     "nodemon": "^2.0.19",
     "pg": "^8.7.3",
+    "random-words": "^1.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "style-loader": "^3.3.1"
