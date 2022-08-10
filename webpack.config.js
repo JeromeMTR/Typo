@@ -1,4 +1,5 @@
-const path - require('path');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: path.join(__dirname, './client/src/index.jsx'),
@@ -10,13 +11,15 @@ module.exports = {
     port: 3000,
     watchContentBase: true,
   },
-  moudle: {
+  mode: 'development',
+  module: {
     rules: [
       {
         test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-lader'
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel-loader',
+        options: {
+          presets : ['@babel/env']
         }
       },
       {
@@ -27,10 +30,12 @@ module.exports = {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
       },
-    ]
+    ],
   },
-  plugins: [new HtmlWebpackPlugin({
-    title: 'Typo',
-    lang: 'en',
-  }),
-}
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Typo',
+      lang: 'en',
+    }),
+  ],
+};

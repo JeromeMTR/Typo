@@ -1,0 +1,10 @@
+{
+  "eslint.alwaysShowStatus": true,
+  "eslint.format.enable": true,
+  "eslint.enable": true,
+  "eslint.execArgv": null,
+  "eslint.lintTask.enable": false,
+  "eslint.rules.customizations": [
+
+  ]
+}
