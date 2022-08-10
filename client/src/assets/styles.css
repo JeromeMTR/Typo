@@ -21,7 +21,7 @@
 
 .typingtest,  .stats{
   display: flex;
-  min-width: 500px;
+  min-width: 490px;
   width: 90%;
   flex-direction: column;
   align-items: center;
@@ -31,7 +31,15 @@
 
 .submenu {
   display: flex;
-  width: 80%;
+  width: 85%;
   justify-content: space-between;
+}
+
+.time-selection-container {
+  display: flex;
+}
+
+.time-selection, .countdown-timer, .stats-toggle {
+  margin: 0px 15px 0px 15px
 }
 

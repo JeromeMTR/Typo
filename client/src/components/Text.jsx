@@ -3,7 +3,13 @@ import randomWords from 'random-words';
 
 const Text = () => {
 
-  let randomText = randomWords({exactly: 150, join: ' ', maxLength: 8});
+  const [randomText, setRandomText] = useState(randomWords({
+    exactly: 150,
+    join: ' ',
+    maxLength: 7
+  }));
+
+
 
   return (
     <div className='text'>
