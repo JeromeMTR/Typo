@@ -1,0 +1,30 @@
+#root {
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  display: flex;
+  height: 97vh;
+  border: 1px black solid;
+  width: 1200px;
+  justify-content: center;
+  align-content: center;
+}
+
+.typingtest,  .stats{
+  display: flex;
+  min-width: 500px;
+  width: 80%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 0;
+  border: 1px black solid;
+}
+
+.submenu {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}

@@ -10,7 +10,7 @@ const App = () => {
     setTest((prevState) => !prevState);
   };
 
-  return (<>
+  return (<div className='app'>
     {test ?
       <TypingTest
         showStats={ toggleTest }
@@ -21,7 +21,7 @@ const App = () => {
         showTest={ toggleTest }
       />
     }
-  </>
+  </div>
   );
 };
 

@@ -1,6 +1,7 @@
 import React from 'react';
-import { createRoot } from 'react-dom';
+import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
+import './assets/styles.css';
 
 document.documentElement.setAttribute('lang', 'en');
 const container = document.createElement('div');
