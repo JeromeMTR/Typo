@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { BsKeyboard } from 'react-icons/bs';
-import MainStats from './MainStats.jsx';
-import SubStats from './subStats.jsx';
+import MainStats from './MainStat.jsx';
+import SubStats from './SubStat.jsx';
 
 const Stats = ({ showTest }) => {
   return (
@@ -11,6 +12,10 @@ const Stats = ({ showTest }) => {
       <SubStats />
     </div>
   );
+};
+
+Stats.propTypes = {
+  showTest: PropTypes.func.isRequired
 };
 
 export default Stats;

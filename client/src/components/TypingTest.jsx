@@ -64,7 +64,7 @@ const TypingTest = ({ showStats }) => {
 };
 
 TypingTest.propTypes = {
-  showStats: PropTypes.string.isRequired
+  showStats: PropTypes.func.isRequired
 };
 
 export default TypingTest;

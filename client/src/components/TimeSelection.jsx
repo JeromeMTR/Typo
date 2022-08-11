@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const TimeSelection = ({ setCountDown, countDown }) => {
   let timeOptions = [15, 30, 60];
@@ -14,6 +15,11 @@ const TimeSelection = ({ setCountDown, countDown }) => {
       })}
     </aside>
   );
+};
+
+TimeSelection.propTypes = {
+  setCountDown: PropTypes.func.isRequired,
+  countDown: PropTypes.number.isRequired
 };
 
 export default TimeSelection;

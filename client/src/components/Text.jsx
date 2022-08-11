@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import randomWords from 'random-words';
 
 const Text = ({ wordInput, startTest }) => {
@@ -22,6 +23,11 @@ const Text = ({ wordInput, startTest }) => {
       />
     </div>
   );
+};
+
+Text.propTypes = {
+  startTest: PropTypes.func.isRequired,
+  wordInput: PropTypes.string.isRequired
 };
 
 export default Text;

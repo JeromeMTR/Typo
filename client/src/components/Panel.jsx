@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { ImStatsBars } from 'react-icons/im';
 
 const Panel = ({ showStats, countDown }) => {
@@ -12,6 +13,11 @@ const Panel = ({ showStats, countDown }) => {
       />
     </div>
   );
+};
+
+Panel.propTypes = {
+  showStats: PropTypes.func.isRequired,
+  countDown: PropTypes.number.isRequired
 };
 
 export default Panel;
