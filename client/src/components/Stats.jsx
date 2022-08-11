@@ -13,6 +13,7 @@ const Stats = ({ showTest }) => {
   const getAll = () => {
     return axios.get(localhost)
       .then(({ data }) => {
+        console.log(data);
         toggleMain(() => ({
           ...main,
           data: data

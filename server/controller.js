@@ -1,5 +1,7 @@
 const {
   readAllScores,
+  readTopThree,
+  readMostRecent,
   insertScore
 } = require('./model.js');
 
@@ -9,6 +11,16 @@ const handleError = (res, err) => res.status(500).send(err);
 module.exports = {
   getAllScores(req, res) {
     readAllScores()
+      .then(({ rows }) => handleResponse(res, 200, rows))
+      .catch(err => handleResponse(res, err));
+  },
+  getTopThree(req, res) {
+    readTopThree()
+      .then(({ rows }) => handleResponse(res, 200, rows))
+      .catch(err => handleResponse(res, err));
+  },
+  getMostRecent(req, res) {
+    readMostRecent()
       .then(({ rows }) => handleResponse(res, 200, rows))
       .catch(err => handleResponse(res, err));
   },

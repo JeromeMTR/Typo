@@ -2,7 +2,15 @@ const query = require('../database');
 
 module.exports = {
   readAllScores() {
-    const text = 'SELECT * FROM scores ORDER BY scores.wpm DESC';
+    const text = 'SELECT * FROM scores';
+    return query(text);
+  },
+  readTopThree() {
+    const text = 'SELECT * FROM scores ORDER BY scores.wpm DESC LIMIT 3';
+    return query(text);
+  },
+  readMostRecent() {
+    const text = 'SELECT * FROM scores ORDER BY date_time DESC LIMIT 5';
     return query(text);
   },
   insertScore({wpm, accuracy, date}) {
