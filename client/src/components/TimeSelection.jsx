@@ -9,7 +9,7 @@ const TimeSelection = ({ setCountDown }) => {
         return <div
           className='time-selection'
           key={i}
-          onClick={() => setCountDown(seconds)}>{seconds}
+          onClick={(e) => setCountDown(e, seconds)}>{seconds}
         </div>;
       })}
     </aside>

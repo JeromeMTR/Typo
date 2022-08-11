@@ -5,6 +5,7 @@ import Stats from './components/Stats.jsx';
 const App = () => {
   const [test, setTest] = useState(true);
   const [testData, setTestData] = useState();
+  const [currentSeconds, setCurrentSeconds] = useState();
 
   const toggleTest = () => {
     setTest((prevState) => !prevState);
@@ -13,10 +14,13 @@ const App = () => {
   return (<div className='app'>
     {test ?
       <TypingTest
+        currentSeconds={ currentSeconds }
+        setCurrentSeconds={ setCurrentSeconds }
         showStats={ toggleTest }
         liftData={ setTestData }
       /> :
       <Stats
+        currentSeconds={ currentSeconds }
         data={ testData }
         showTest={ toggleTest }
       />

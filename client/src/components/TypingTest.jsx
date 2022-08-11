@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { VscDebugRestart } from 'react-icons/vsc';
 import SubMenu from './SubMenu.jsx';
 import Text from './Text.jsx';
 
 let testInterval;
+let currentSeconds = 15;
 
 const TypingTest = ({ showStats }) => {
   const [countDown, setCountDown] = useState(15);
   const [wordInput, setWordInput] = useState('');
   const [start, setStart] = useState(false);
-
 
   const startTest = (e) => {
     if (!start) {
@@ -27,32 +28,37 @@ const TypingTest = ({ showStats }) => {
     setWordInput(e.target.value);
   };
 
-  const changeCountDown = (seconds) => {
+  const changeCountDown = (e, seconds) => {
+    e.preventDefault();
     clearInterval(testInterval);
     setCountDown(seconds);
     setStart(false);
     setWordInput('');
   };
 
-  // useEffect(() => {
-  //   changeCountDown((prevState) => prevState);
-  // }, [countDown]);
+  useEffect(() => {
+    currentSeconds = countDown;
+  }, [start]);
 
   return (
     <div className='typingtest'>
       <SubMenu
-        setCountDown={changeCountDown}
+        setCountDown={ changeCountDown }
         countDown={ countDown }
         showStats={ showStats }
+        currentSeconds={ currentSeconds }
       />
       <Text
         wordInput={ wordInput }
+        startTest={ startTest }
       />
-      <input
-        onChange={ startTest }
-        value={ wordInput }
-      />
-      <div>Restart Button</div>
+
+        <VscDebugRestart
+
+        onClick={
+           (e) => changeCountDown(e, currentSeconds)
+         }
+         />
     </div>
   );
 };
