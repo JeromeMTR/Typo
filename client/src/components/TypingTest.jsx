@@ -7,24 +7,30 @@ let testInterval;
 const TypingTest = ({ showStats }) => {
   const [countDown, setCountDown] = useState(15);
   const [wordInput, setWordInput] = useState('');
+  const [start, setStart] = useState(false);
 
 
   const startTest = (e) => {
-    testInterval = setInterval(() => {
-      setCountDown((prevState) => {
-        if (prevState === 0) {
-          clearInterval(testInterval);
-          return showStats();
-        }
-        return prevState - 1;
-      });
-    }, 1000);
+    if (!start) {
+      testInterval = setInterval(() => {
+        setCountDown((prevState) => {
+          if (prevState === 0) {
+            clearInterval(testInterval);
+            setStart(false);
+            return showStats();
+          }
+          return prevState - 1;
+        });
+      }, 1000);
+      setStart(true);
+    }
     setWordInput(e.target.value);
   };
 
   const changeCountDown = (seconds) => {
     clearInterval(testInterval);
     setCountDown(seconds);
+    setStart(false);
     setWordInput('');
   };
 
@@ -39,8 +45,13 @@ const TypingTest = ({ showStats }) => {
         countDown={ countDown }
         showStats={ showStats }
       />
-      <Text/>
-      <input onChange={startTest} value={wordInput}></input>
+      <Text
+        wordInput={ wordInput }
+      />
+      <input
+        onChange={ startTest }
+        value={ wordInput }
+      />
       <div>Restart Button</div>
     </div>
   );
