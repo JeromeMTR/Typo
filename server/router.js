@@ -1,14 +1,10 @@
 const router = require('express').Router();
 const {
-  getAllScores,
-  getTopThree,
-  getMostRecent,
+  getAll,
   postScores
 } = require('./controller.js');
 
-router.get('/', getAllScores);
-router.get('/topThree', getTopThree);
-router.get('/recent', getMostRecent);
+router.get('/', getAll);
 router.post('/', postScores);
 
 module.exports = router;

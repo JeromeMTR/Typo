@@ -4,25 +4,23 @@ const {
   readMostRecent,
   insertScore
 } = require('./model.js');
+const Promise = require('bluebird');
 
 const handleResponse = (res, code, data) => res.status(code).send(data);
 const handleError = (res, err) => res.status(500).send(err);
 
 module.exports = {
-  getAllScores(req, res) {
-    readAllScores()
-      .then(({ rows }) => handleResponse(res, 200, rows))
-      .catch(err => handleResponse(res, err));
-  },
-  getTopThree(req, res) {
-    readTopThree()
-      .then(({ rows }) => handleResponse(res, 200, rows))
-      .catch(err => handleResponse(res, err));
-  },
-  getMostRecent(req, res) {
-    readMostRecent()
-      .then(({ rows }) => handleResponse(res, 200, rows))
-      .catch(err => handleResponse(res, err));
+  getAll(req, res) {
+    let resObj = {};
+    let promiseArray = [readAllScores(), readTopThree(), readMostRecent()];
+    Promise.all(promiseArray)
+      .then(data => {
+        resObj.allScores = data[0].rows;
+        resObj.topThree = data[1].rows;
+        resObj.recent = data[2].rows;
+        return handleResponse(res, 200, resObj);
+      })
+      .catch(err => console.log(err));
   },
   postScores(req, res) {
     console.log(req.body);

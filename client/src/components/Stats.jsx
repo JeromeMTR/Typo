@@ -1,42 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import MainStats from './MainStat.jsx';
-import SubStats from './SubStat.jsx';
+import MainStat from './MainStat.jsx';
+import SubStat from './SubStat.jsx';
 
 const localhost = 'http://localhost:3000/typo';
 
 const Stats = ({ showTest }) => {
-  const [main, toggleMain] = useState({preview: true});
-  const [sub, toggleSub] = useState({preview: true});
+  const [data, setData] = useState();
+  const [main, toggleMain] = useState(true);
+  const [sub, toggleSub] = useState(true);
 
-  const getAll = () => {
+
+  const get = () => {
     return axios.get(localhost)
-      .then(({ data }) => {
-        console.log(data);
-        toggleMain(() => ({
-          ...main,
-          data: data
-        }));
-        toggleSub({
-          ...sub,
-          data: data
-        });
+      .then(( {data} ) => {
+        setData(data);
       })
       .catch(err => console.error(err));
   };
 
   useEffect(() => {
-    getAll();
+    get();
   }, []);
 
   return (
     <div className='stats'>
-      <MainStats
-        showTest={showTest}
-        {...main}
+      <MainStat
       />
-      <SubStats {...sub}/>
+      <SubStat />
     </div>
   );
 };
