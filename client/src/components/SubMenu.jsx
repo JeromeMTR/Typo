@@ -7,6 +7,7 @@ const SubMenu = ({ showStats, countDown, setCountDown }) => {
     <div className='submenu'>
       <TimeSelection
         setCountDown={setCountDown}
+        countDown={ countDown }
       />
       <Panel
         countDown={ countDown }

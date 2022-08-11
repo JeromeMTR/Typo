@@ -14,11 +14,11 @@ const Text = ({ wordInput, startTest }) => {
 
   return (
     <div>
-      <div className='text'>{randomText}</div>
+      <div className='text'>{ randomText }</div>
       <input
         className='textbox'
         onChange={ startTest }
-        value={wordInput}
+        value={ wordInput }
       />
     </div>
   );

@@ -1,9 +1,14 @@
 import React from 'react';
+import { BsKeyboard } from 'react-icons/bs';
+import MainStats from './MainStats.jsx';
+import SubStats from './subStats.jsx';
 
 const Stats = ({ showTest }) => {
   return (
     <div className='stats'>
-      <div onClick={showTest}>hi</div>
+      <BsKeyboard onClick={showTest}/>
+      <MainStats />
+      <SubStats />
     </div>
   );
 };

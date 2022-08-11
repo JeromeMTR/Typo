@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { VscDebugRestart } from 'react-icons/vsc';
 import SubMenu from './SubMenu.jsx';
 import Text from './Text.jsx';
@@ -53,14 +54,17 @@ const TypingTest = ({ showStats }) => {
         startTest={ startTest }
       />
 
-        <VscDebugRestart
-
+      <VscDebugRestart
         onClick={
-           (e) => changeCountDown(e, currentSeconds)
-         }
-         />
+          (e) => changeCountDown(e, currentSeconds)
+        }
+      />
     </div>
   );
+};
+
+TypingTest.propTypes = {
+  showStats: PropTypes.string.isRequired
 };
 
 export default TypingTest;
