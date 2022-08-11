@@ -25,7 +25,6 @@ module.exports = {
   postScores(req, res) {
     let date = new Date();
     req.body.date = date.toUTCString().slice(0, -7);
-    console.log(req.body);
     insertScore(req.body)
       .then(result => handleResponse(res, 201, result.command))
       .catch(err => handleError(res, err));
