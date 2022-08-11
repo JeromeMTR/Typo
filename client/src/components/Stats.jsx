@@ -7,15 +7,14 @@ import SubStat from './SubStat.jsx';
 const localhost = 'http://localhost:3000/typo';
 
 const Stats = ({ showTest }) => {
-  const [data, setData] = useState();
+  const [scores, setScores] = useState();
   const [main, toggleMain] = useState(true);
   const [sub, toggleSub] = useState(true);
 
-
   const get = () => {
     return axios.get(localhost)
-      .then(( {data} ) => {
-        setData(data);
+      .then( ( {data} ) => {
+        setScores(data);
       })
       .catch(err => console.error(err));
   };
@@ -23,12 +22,23 @@ const Stats = ({ showTest }) => {
   useEffect(() => {
     get();
   }, []);
+  useEffect(() => {
+    console.log(scores)
+  }, [scores]);
 
   return (
     <div className='stats'>
       <MainStat
+        main={main}
+        toggle={toggleMain}
+        showTest={showTest}
+        {...scores}
       />
-      <SubStat />
+      <SubStat
+        sub={sub}
+        toggle={toggleSub}
+        {...scores}
+      />
     </div>
   );
 };

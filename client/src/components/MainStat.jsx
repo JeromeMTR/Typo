@@ -5,9 +5,9 @@ import { BsKeyboard } from 'react-icons/bs';
 const MainStat = ({ showTest, preview, data }) => {
   const [toggle, setToggle] = useState(true);
 
-  if (toggle) {
+  // if (toggle) {
 
-  }
+  // }
 
   return (
     <div>
