@@ -13,7 +13,8 @@ module.exports = {
       .catch(err => handleResponse(res, err));
   },
   postScores(req, res) {
-    insertScore()
+    console.log(req);
+    insertScore(req.body)
       .then(result => handleResponse(res, 201, result))
       .catch(err => handleError(res, err));
   }

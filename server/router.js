@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const { getAllData, postScores } = require('./controller.js');
+const { getAllScores, postScores } = require('./controller.js');
 
-router.get('/', getAllData);
+router.get('/', getAllScores);
 router.post('/', postScores);
 
 module.exports = router;
