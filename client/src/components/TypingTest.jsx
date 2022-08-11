@@ -5,10 +5,9 @@ import SubMenu from './SubMenu.jsx';
 import Text from './Text.jsx';
 
 let testInterval;
-let currentSeconds = 15;
 
-const TypingTest = ({ showStats }) => {
-  const [countDown, setCountDown] = useState(15);
+const TypingTest = ({ showStats, setCurrentSeconds, currentSeconds}) => {
+  const [countDown, setCountDown] = useState(currentSeconds);
   const [wordInput, setWordInput] = useState('');
   const [start, setStart] = useState(false);
 
@@ -38,12 +37,14 @@ const TypingTest = ({ showStats }) => {
   };
 
   useEffect(() => {
-    currentSeconds = countDown;
+    setCurrentSeconds(countDown);
   }, [start]);
 
   return (
     <div className='typingtest'>
       <SubMenu
+        setCurrentSeconds={ setCurrentSeconds }
+        start={ start }
         setCountDown={ changeCountDown }
         countDown={ countDown }
         showStats={ showStats }

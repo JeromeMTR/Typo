@@ -8,14 +8,19 @@ const Text = ({ wordInput, startTest }) => {
   useEffect(() => {
     setRandomText(randomWords({
       exactly: 150,
-      join: ' ',
       maxLength: 7
     }));
   }, []);
 
+  if (!randomText) return null;
+
   return (
     <div>
-      <div className='text'>{ randomText }</div>
+      <div className='text'>
+        {randomText.map((word, i) => {
+          return <span key={i}>{`${word} `+ ' '}</span>;
+        })}
+      </div>
       <input
         className='textbox'
         onChange={ startTest }

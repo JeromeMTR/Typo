@@ -5,7 +5,7 @@ import Stats from './components/Stats.jsx';
 const App = () => {
   const [test, setTest] = useState(true);
   const [testData, setTestData] = useState();
-  const [currentSeconds, setCurrentSeconds] = useState();
+  const [currentSeconds, setCurrentSeconds] = useState(15);
 
   const toggleTest = () => {
     setTest((prevState) => !prevState);
