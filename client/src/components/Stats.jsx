@@ -22,10 +22,8 @@ const Stats = ({ showTest }) => {
   useEffect(() => {
     get();
   }, []);
-  useEffect(() => {
-    console.log(scores)
-  }, [scores]);
 
+  if (!scores) return null;
   return (
     <div className='stats'>
       <MainStat

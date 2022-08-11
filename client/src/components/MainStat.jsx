@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { BsKeyboard } from 'react-icons/bs';
 
-const MainStat = ({ showTest, preview, data }) => {
-  const [toggle, setToggle] = useState(true);
-
-  // if (toggle) {
-
-  // }
+const MainStat = ({ showTest, toggle, scores, main, allScores, topThree}) => {
+  const [avg, setAvg] = useState();
+  console.log(topThree[0].date_time);
+  console.log(new Date())
 
   return (
     <div>
@@ -24,7 +22,11 @@ const MainStat = ({ showTest, preview, data }) => {
 };
 
 MainStat.propTypes = {
-  showTest: PropTypes.func.isRequired
+  showTest: PropTypes.func.isRequired,
+  toggle: PropTypes.func.isRequired,
+  main: PropTypes.bool.isRequired,
+  allScores: PropTypes.array.isRequired,
+  topThree: PropTypes.array.isRequired,
 };
 
 export default MainStat;

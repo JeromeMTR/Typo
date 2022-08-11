@@ -23,13 +23,8 @@ module.exports = {
       .catch(err => console.log(err));
   },
   postScores(req, res) {
-    console.log(req.body);
     let date = new Date();
-    console.log(date.toUTCString());
-    const userTimezoneOffset = date.getTimezoneOffset() * 60000;
-    const d = new Date(date.getTime() - userTimezoneOffset);
-    console.log(d.toString);
-    req.body.date = d;
+    req.body.date = date.toUTCString().slice(0, -7);
     console.log(req.body);
     insertScore(req.body)
       .then(result => handleResponse(res, 201, result.command))
