@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import { BsKeyboard } from 'react-icons/bs';
 
-const MainStat = () => {
+const MainStat = ({ showTest }) => {
+  const [toggle, setToggle] = useState(true);
+
   return (
-    <div>MainStat</div>
+    <div>
+
+      <BsKeyboard onClick={showTest}/>
+    </div>
   );
 };
 
 MainStat.propTypes = {
-
+  showTest: PropTypes.func.isRequired
 };
 
 export default MainStat;

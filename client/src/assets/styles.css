@@ -20,6 +20,10 @@
   margin: 15px auto 15px;
 }
 
+.word {
+  white-space: pre;
+}
+
 .typingtest,  .stats{
   display: flex;
   min-width: 490px;

@@ -8,7 +8,7 @@ const TimeSelection = ({ setCountDown, countDown, setCurrentSeconds }) => {
     setCountDown(e, time);
     setCurrentSeconds(time);
     return;
-  }
+  };
 
   return (
     <aside className='time-selection-container'>
@@ -25,6 +25,7 @@ const TimeSelection = ({ setCountDown, countDown, setCurrentSeconds }) => {
 
 TimeSelection.propTypes = {
   setCountDown: PropTypes.func.isRequired,
+  setCurrentSeconds: PropTypes.func.isRequired,
   countDown: PropTypes.number.isRequired
 };
 

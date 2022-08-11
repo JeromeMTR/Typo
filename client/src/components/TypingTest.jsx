@@ -15,11 +15,14 @@ const TypingTest = ({ showStats, setCurrentSeconds, currentSeconds}) => {
     if (!start) {
       testInterval = setInterval(() => {
         setCountDown((prevState) => {
-          if (prevState === 0) {
-            clearInterval(testInterval);
-            setStart(false);
-            return showStats();
-          }
+          (async () => {
+            if (prevState === 0) {
+              await showStats();
+              await clearInterval(testInterval);
+              await setStart(false);
+              await setCountDown(currentSeconds);
+            }
+          })();
           return prevState - 1;
         });
       }, 1000);
@@ -44,7 +47,6 @@ const TypingTest = ({ showStats, setCurrentSeconds, currentSeconds}) => {
     <div className='typingtest'>
       <SubMenu
         setCurrentSeconds={ setCurrentSeconds }
-        start={ start }
         setCountDown={ changeCountDown }
         countDown={ countDown }
         showStats={ showStats }
@@ -65,7 +67,9 @@ const TypingTest = ({ showStats, setCurrentSeconds, currentSeconds}) => {
 };
 
 TypingTest.propTypes = {
-  showStats: PropTypes.func.isRequired
+  showStats: PropTypes.func.isRequired,
+  setCurrentSeconds: PropTypes.func.isRequired,
+  currentSeconds: PropTypes.number.isRequired
 };
 
 export default TypingTest;

@@ -16,11 +16,11 @@ const Text = ({ wordInput, startTest }) => {
 
   return (
     <div>
-      <div className='text'>
+      <p className='text'>
         {randomText.map((word, i) => {
-          return <span key={i}>{`${word} `+ ' '}</span>;
+          return <span className='word' key={i}>{word} </span>;
         })}
-      </div>
+      </p>
       <input
         className='textbox'
         onChange={ startTest }

@@ -8,7 +8,7 @@ const App = () => {
   const [currentSeconds, setCurrentSeconds] = useState(15);
 
   const toggleTest = () => {
-    setTest((prevState) => !prevState);
+    return setTest((prevState) => !prevState);
   };
 
   return (<div className='app'>
