@@ -4,25 +4,21 @@ import randomWords from 'random-words';
 
 const Text = ({ wordInput, setWordInput, startTest, currentSeconds, setCorrectKeys }) => {
   const [randomText, setRandomText] = useState();
-  const [match, setMatch] = useState();
 
   const start = (value) => {
     startTest();
-    getCorrectSymbols(wordInput);
     setWordInput(value);
   };
 
   const getCorrectSymbols = (wordInput) => {
-    console.log(wordInput);
-    if (wordInput.length < 1) return;
     let correct = 0;
     for (let i = 0; i < wordInput.length; i++) {
       if (wordInput[i] === randomText[i]) {
         correct++;
       }
     }
-    console.log(correct);
-    setCorrectKeys(correct);
+    console.log('this is correct',correct);
+    return setCorrectKeys(correct);
   };
 
   useEffect(() => {
@@ -50,7 +46,7 @@ const Text = ({ wordInput, setWordInput, startTest, currentSeconds, setCorrectKe
   }, [currentSeconds]);
 
   useEffect(() => {
-    console.log(wordInput)
+    getCorrectSymbols(wordInput);
   }, [wordInput]);
 
   if (!randomText) return null;

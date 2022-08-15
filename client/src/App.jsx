@@ -17,10 +17,12 @@ const App = () => {
         currentSeconds={ currentSeconds }
         setCurrentSeconds={ setCurrentSeconds }
         showStats={ toggleTest }
+        test={ test }
         liftData={ setTestData }
       /> :
       <Stats
         currentSeconds={ currentSeconds }
+        test={ test }
         data={ testData }
         showTest={ toggleTest }
       />
