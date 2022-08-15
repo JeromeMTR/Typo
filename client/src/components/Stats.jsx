@@ -35,6 +35,7 @@ const Stats = ({ showTest }) => {
       <SubStat
         sub={sub}
         toggle={toggleSub}
+        showTest={showTest}
         {...scores}
       />
     </div>

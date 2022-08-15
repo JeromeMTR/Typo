@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { BsKeyboard } from 'react-icons/bs';
-import line from '../assets/photos/thick-vertical-line.png';
 
 const MainStat = ({ showTest, toggle,  main, allScores, topThree}) => {
   const [highScore, setHighScore] = useState();
@@ -32,19 +31,20 @@ const MainStat = ({ showTest, toggle,  main, allScores, topThree}) => {
     getAvg();
   }, [main]) ;
 
-  if (!highScore ) return null;
+  if (!highScore ) return <h2 className='no-data' onClick={showTest}>Start Typing</h2>;
   return (
     <div className='stats-container'>
       <div className='main-stat-menu'>
         <div className='main-menu-headings'>
           <h2
-            className='high-score-heading'
+            className={main ? 'high-score-heading main-selected' : 'high-score-heading'}
             onClick={() => toggle(true)}
           >
             High Score
           </h2>
-          <h2 onClick={() => toggle(false)}
-            className='average-heading'
+          <h2
+            className={!main ? 'average-heading main-selected' : 'average-heading'}
+            onClick={() => toggle(false)}
           >
             Average
           </h2>
@@ -54,13 +54,28 @@ const MainStat = ({ showTest, toggle,  main, allScores, topThree}) => {
           onClick={showTest}/
         >
       </div>
-
-      {main ?
-        <div>{highScore.wpm}, {highScore.accuracy}, {highScore.date_time}</div>  :
-        <div>{average.wpm}, {average.accuracy}, {highScore.date_time}</div>
-      }
+      <div
+        className='data-headings'
+      >
+        <div className='wpm-heading'>WPM</div>
+        <div className='accuracy-heading'>Accuracy</div>
+        <div className='date-heading'>Date</div>
+      </div>
+      <div className='data-container'>
+        {main ?
+          <div className='stats-data'>
+            <div className='data'>{highScore.wpm}</div>
+            <div className='data'>{highScore.accuracy}%</div>
+            <div className='data'>{highScore.date_time}</div>
+          </div>  :
+          <div className='stats-data'>
+            <div className='data'>{average.wpm}</div>
+            <div className='data'>{average.accuracy}%</div>
+            <div className='data'>{average.date_time}</div>
+          </div>
+        }
+      </div>
       <div>
-
       </div>
     </div>
   );

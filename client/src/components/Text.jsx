@@ -1,52 +1,70 @@
-import React, { useState, useEffect, createRef, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import randomWords from 'random-words';
 
-const Text = ({ wordInput, setWordInput, startTest, currentSeconds }) => {
+const Text = ({ wordInput, setWordInput, startTest, currentSeconds, setCorrectKeys }) => {
   const [randomText, setRandomText] = useState();
+  const [match, setMatch] = useState();
 
   const start = (value) => {
     startTest();
+    getCorrectSymbols(wordInput);
     setWordInput(value);
+  };
+
+  const getCorrectSymbols = (wordInput) => {
+    console.log(wordInput);
+    if (wordInput.length < 1) return;
+    let correct = 0;
+    for (let i = 0; i < wordInput.length; i++) {
+      if (wordInput[i] === randomText[i]) {
+        correct++;
+      }
+    }
+    console.log(correct);
+    setCorrectKeys(correct);
   };
 
   useEffect(() => {
     if (currentSeconds === 15) {
       setRandomText(randomWords({
-        exactly: 47,
+        exactly: 40,
         maxLength: 7,
+        join: ' '
       }));
     }
     else if (currentSeconds === 30) {
       setRandomText(randomWords({
-        exactly: 100,
+        exactly: 80,
         maxLength: 7,
+        join: ' '
       }));
     }
     else if (currentSeconds === 60) {
       setRandomText(randomWords({
-        exactly: 150,
+        exactly: 120,
         maxLength: 7,
+        join: ' '
       }));
     }
   }, [currentSeconds]);
 
+  useEffect(() => {
+    console.log(wordInput)
+  }, [wordInput]);
 
   if (!randomText) return null;
 
   return (
     <div>
       <p className='text'>
-        {randomText.map((word, i) => {
-          return <span key={i}>
-            {word.split('').map((char, j) => {
-              let textColor;
-              if (j < wordInput.length) {
-                textColor = word[j] === wordInput[j] ? '#45bbff' : '#da0037';
-              }
+        {randomText.split('').map((char, i) => {
+          let textColor;
 
-              return <span key={j} style={{color: textColor}}>{char}</span>;
-            })} </span>;
+          if (wordInput.length > i) {
+            textColor = wordInput[i] === char ? 'green' : 'red';
+          }
+          return <span key={i} style={{color: textColor}}>{char}</span>;
         })}
       </p>
       <input
@@ -61,6 +79,7 @@ const Text = ({ wordInput, setWordInput, startTest, currentSeconds }) => {
 Text.propTypes = {
   startTest: PropTypes.func.isRequired,
   setWordInput: PropTypes.func.isRequired,
+  setCorrectKeys: PropTypes.func.isRequired,
   wordInput: PropTypes.string.isRequired,
   currentSeconds: PropTypes.number.isRequired
 };

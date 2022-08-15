@@ -17,12 +17,12 @@
 .text, .restart {
   display: flex;
   flex-wrap: wrap;
-  width: 90%;
+  max-width: 90%;
   font-weight: 600;
   margin: 15px auto 15px;
 }
 
-span {
+span, div {
   white-space: pre;
 }
 
@@ -49,16 +49,16 @@ span {
   margin: 0px 15px 0px 15px;
   padding: 10px 15px 10px 15px;
   border-radius: 3px;
-  border: 1px solid gray;
+  border: 1px solid rgb(255, 255, 255);
 }
 
 .time-selection-selected {
-  background-color: rgb(255, 255, 255);
-  color: rgb(0, 0, 0);
+  background-color: white;
+  color: #da0037;
   margin: 0px 15px 0px 15px;
   padding: 10px 15px 10px 15px;
   border-radius: 3px;
-  border: 1px solid gray;
+  border: 1px solid #da0037;
 }
 
 .stats-toggle {
@@ -67,7 +67,7 @@ span {
 }
 
 div {
-  color: rgb(207, 207, 207);
+  color: rgb(255, 255, 255);
   font-family: 'Noto Serif JP';
   font-size: 25px;
 }
@@ -107,7 +107,7 @@ div {
 }
 
 .stats-container {
-  width: 80%;
+  width: 70%;
 }
 
 .main-menu-headings {
@@ -117,4 +117,33 @@ div {
 .keyboard-icon {
   font-size: 50px;
   align-self: center;
+}
+
+.data-headings, .stats-data {
+  display: flex;
+  justify-content: space-around;
+}
+
+.wpm-heading, .accuracy-heading, .date-heading {
+  text-align: center;
+  font-size: 20px;
+  width: 33.3%;
+}
+
+.data {
+  text-align: center;
+  width: 33.3%;
+  font-size: 15px;
+}
+
+.main-selected {
+  color: #da0037;
+}
+
+.high-score-heading:hover, .average-heading:hover,
+.keyboard-icon:hover, .no-data:hover, .stats-toggle:hover,
+.time-selection:hover
+{
+  color: #da0037;
+  cursor: pointer;
 }
