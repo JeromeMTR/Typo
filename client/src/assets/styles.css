@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300&display=swap');
 
-#root {
+#root, html {
   display: flex;
   justify-content: center;
+  background-color: #171717;
 }
 
 .app {
@@ -17,10 +18,11 @@
   display: flex;
   flex-wrap: wrap;
   width: 90%;
+  font-weight: 600;
   margin: 15px auto 15px;
 }
 
-.word {
+span {
   white-space: pre;
 }
 
@@ -51,8 +53,8 @@
 }
 
 .time-selection-selected {
-  background-color: black;
-  color: white;
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   margin: 0px 15px 0px 15px;
   padding: 10px 15px 10px 15px;
   border-radius: 3px;
@@ -65,18 +67,54 @@
 }
 
 div {
+  color: rgb(207, 207, 207);
   font-family: 'Noto Serif JP';
-  font-size: 20px;
+  font-size: 25px;
 }
 
 .stats-toggle {
   display: flex;
   align-self: center;
   font-size: 25px;
-  color: rgb(42, 42, 42);
+  color: rgb(255, 255, 255);
 }
 
 .textbox {
   display: flex;
   margin: 0 auto;
+}
+
+.main-stat-menu {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.toggle-line {
+  height: 60px;
+  align-self: center;
+  color: black;
+  background-color: transparent;
+}
+
+.high-score-heading {
+  padding-right: 25px;
+  border-right: 2px solid white;
+}
+
+.average-heading {
+  padding-left: 25px;
+}
+
+.stats-container {
+  width: 80%;
+}
+
+.main-menu-headings {
+  display: flex;
+}
+
+.keyboard-icon {
+  font-size: 50px;
+  align-self: center;
 }

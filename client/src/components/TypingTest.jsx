@@ -11,7 +11,7 @@ const TypingTest = ({ showStats, setCurrentSeconds, currentSeconds}) => {
   const [wordInput, setWordInput] = useState('');
   const [start, setStart] = useState(false);
 
-  const startTest = (e) => {
+  const startTest = () => {
     if (!start) {
       testInterval = setInterval(() => {
         setCountDown((prevState) => {
@@ -21,6 +21,7 @@ const TypingTest = ({ showStats, setCurrentSeconds, currentSeconds}) => {
               await clearInterval(testInterval);
               await setStart(false);
               await setCountDown(currentSeconds);
+              // send data as well
             }
           })();
           return prevState - 1;
@@ -28,7 +29,6 @@ const TypingTest = ({ showStats, setCurrentSeconds, currentSeconds}) => {
       }, 1000);
       setStart(true);
     }
-    setWordInput(e.target.value);
   };
 
   const changeCountDown = (e, seconds) => {
@@ -53,15 +53,16 @@ const TypingTest = ({ showStats, setCurrentSeconds, currentSeconds}) => {
         currentSeconds={ currentSeconds }
       />
       <Text
+        currentSeconds={ currentSeconds }
         wordInput={ wordInput }
+        setWordInput={ setWordInput }
         startTest={ startTest }
       />
-
-      <VscDebugRestart
-        onClick={
-          (e) => changeCountDown(e, currentSeconds)
-        }
-      />
+      <button
+        onClick={(e) => changeCountDown(e, currentSeconds)}
+      >
+        <VscDebugRestart />
+      </button>
     </div>
   );
 };

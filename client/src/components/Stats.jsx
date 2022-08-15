@@ -4,7 +4,7 @@ import axios from 'axios';
 import MainStat from './MainStat.jsx';
 import SubStat from './SubStat.jsx';
 
-const localhost = 'http://localhost:3000/typo';
+const localhost = 'http://localhost:8080/typo';
 
 const Stats = ({ showTest }) => {
   const [scores, setScores] = useState();
