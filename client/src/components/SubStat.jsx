@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const SubStat = ({sub, toggle, topThree, recent, showTest}) => {
@@ -54,6 +54,7 @@ const SubStat = ({sub, toggle, topThree, recent, showTest}) => {
 SubStat.propTypes = {
   sub: PropTypes.bool.isRequired,
   toggle: PropTypes.func.isRequired,
+  showTest: PropTypes.func.isRequired,
   recent: PropTypes.array.isRequired,
   topThree: PropTypes.array.isRequired,
 };

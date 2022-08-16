@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
-import { VscDebugRestart } from 'react-icons/vsc';
 import SubMenu from './SubMenu.jsx';
 import Text from './Text.jsx';
 
@@ -35,7 +34,6 @@ const TypingTest = ({ test, showStats, setCurrentSeconds, currentSeconds }) => {
       setStart(true);
     }
   };
-
 
   const postData = (correctKeys) => {
     const wpm = Math.round((correctKeys/5) / (currentSeconds/60));
@@ -89,11 +87,6 @@ const TypingTest = ({ test, showStats, setCurrentSeconds, currentSeconds }) => {
         correctKeys={ correctKeys }
         setCorrectKeys={ setCorrectKeys }
       />
-      {/* <button
-        onClick={(e) => changeCountDown(e, currentSeconds)}
-      >
-        <VscDebugRestart />
-      </button> */}
     </div>
   );
 };

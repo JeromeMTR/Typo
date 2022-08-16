@@ -2,7 +2,7 @@ const {
   readAllScores,
   readTopThree,
   readMostRecent,
-  insertScore
+  insertScore,
 } = require('./model.js');
 const Promise = require('bluebird');
 
