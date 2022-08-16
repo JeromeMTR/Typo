@@ -81,7 +81,14 @@ div {
 
 .textbox {
   display: flex;
-  margin: 0 auto;
+  justify-content: center;
+  height: 30px;
+  width: 100px;
+  text-align: center;
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  margin: 0px 10px 0px 100px;
 }
 
 .main-stat-menu {
@@ -140,8 +147,22 @@ div {
   color: #da0037;
 }
 
+.test-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.restart-btn {
+  font-size: 20px;
+  align-self: center;
+  border: 1px solid white;
+  border-radius: 3px;
+  padding: 5px;
+  margin-left: 2px;
+}
+
 .high-score-heading:hover, .average-heading:hover,
-.keyboard-icon:hover, .no-data:hover, .stats-toggle:hover,
+.keyboard-icon:hover, .no-data:hover, .stats-toggle:hover, .restart-btn:hover,
 .time-selection:hover
 {
   color: #da0037;

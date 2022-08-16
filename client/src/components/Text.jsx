@@ -58,22 +58,20 @@ const Text = ({ wordInput, setWordInput, startTest, currentSeconds, setCorrectKe
           let textColor;
 
           if (wordInput.length > i) {
-            textColor = wordInput[i] === char ? 'green' : 'red';
+            textColor = wordInput[i] === char ? '#009dff' : '#da0037';
           }
           return <span key={i} style={{color: textColor}}>{char}</span>;
         })}
       </p>
-      <div>
+      <div className='test-actions'>
         <input
           className='textbox'
           onChange={(e) => start(e.target.value)}
           value={ wordInput }
         />
-        <button
-          onClick={(e) => changeCountDown(e, currentSeconds)}
-        >
-          <VscDebugRestart />
-        </button>
+        <VscDebugRestart
+          className='restart-btn'
+          onClick={(e) => changeCountDown(e, currentSeconds)}/>
       </div>
     </div>
   );

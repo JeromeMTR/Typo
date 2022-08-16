@@ -20,13 +20,15 @@ const TypingTest = ({ test, showStats, setCurrentSeconds, currentSeconds }) => {
     if (!start) {
       testInterval = setInterval(() => {
         setCountDown((prevState) => {
-          if (prevState === 0) {
-            showStats();
-            clearInterval(testInterval);
-            setStart(false);
-            setCountDown(currentSeconds);
-            postData(currentCorrect);
-          }
+          (async() => {
+            if (prevState === 0) {
+              clearInterval(testInterval);
+              setStart(false);
+              setCountDown(currentSeconds);
+              await postData(currentCorrect);
+              showStats();
+            }
+          })();
           return prevState - 1;
         });
       }, 1000);
@@ -87,11 +89,11 @@ const TypingTest = ({ test, showStats, setCurrentSeconds, currentSeconds }) => {
         correctKeys={ correctKeys }
         setCorrectKeys={ setCorrectKeys }
       />
-      <button
+      {/* <button
         onClick={(e) => changeCountDown(e, currentSeconds)}
       >
         <VscDebugRestart />
-      </button>
+      </button> */}
     </div>
   );
 };
