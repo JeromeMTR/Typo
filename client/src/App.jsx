@@ -6,6 +6,7 @@ const App = () => {
   const [test, setTest] = useState(true);
   const [testData, setTestData] = useState();
   const [currentSeconds, setCurrentSeconds] = useState(15);
+  const [correctKeys, setCorrectKeys] = useState();
 
   const toggleTest = () => {
     return setTest((prevState) => !prevState);
@@ -14,6 +15,8 @@ const App = () => {
   return (<div className='app'>
     {test ?
       <TypingTest
+        correctKeys={ correctKeys }
+        setCorrectKeys={ setCorrectKeys }
         currentSeconds={ currentSeconds }
         setCurrentSeconds={ setCurrentSeconds }
         showStats={ toggleTest }

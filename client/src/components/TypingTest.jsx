@@ -6,28 +6,27 @@ import SubMenu from './SubMenu.jsx';
 import Text from './Text.jsx';
 
 let testInterval;
-let currentCorrectKeys;
+let currentCorrect;
+let wordInputLength;
 const localhost = 'http://localhost:8080/typo';
 
-const TypingTest = ({ test, showStats, setCurrentSeconds, currentSeconds}) => {
+const TypingTest = ({ test, showStats, setCurrentSeconds, currentSeconds }) => {
   const [countDown, setCountDown] = useState(currentSeconds);
   const [wordInput, setWordInput] = useState('');
-  const [correctKeys, setCorrectKeys] = useState();
   const [start, setStart] = useState(false);
+  const [correctKeys, setCorrectKeys] = useState();
 
   const startTest = () => {
     if (!start) {
       testInterval = setInterval(() => {
-        postData(currentCorrectKeys);
         setCountDown((prevState) => {
           if (prevState === 0) {
             showStats();
             clearInterval(testInterval);
             setStart(false);
             setCountDown(currentSeconds);
-            postData(correctKeys);
+            postData(currentCorrect);
           }
-          currentCorrectKeys = correctKeys;
           return prevState - 1;
         });
       }, 1000);
@@ -36,12 +35,14 @@ const TypingTest = ({ test, showStats, setCurrentSeconds, currentSeconds}) => {
   };
 
 
-  const postData = (correct) => {
-    currentCorrectKeys = correct;
-    console.log(correct);
+  const postData = (correctKeys) => {
     const wpm = Math.round((correctKeys/5) / (currentSeconds/60));
-    console.log(wpm, correct, correctKeys);
-    // return axios.post(localhost, data);
+    const accuracy = Math.round((correctKeys / wordInputLength) * 100);
+
+    return axios.post(localhost, {
+      wpm: wpm,
+      accuracy: accuracy
+    });
   };
 
   const changeCountDown = (e, seconds) => {
@@ -50,6 +51,7 @@ const TypingTest = ({ test, showStats, setCurrentSeconds, currentSeconds}) => {
     setCountDown(seconds);
     setStart(false);
     setWordInput('');
+    setCorrectKeys(0);
   };
 
   useEffect(() => {
@@ -60,6 +62,12 @@ const TypingTest = ({ test, showStats, setCurrentSeconds, currentSeconds}) => {
     changeCountDown(null, currentSeconds);
   }, [test]);
 
+  useEffect(() => {
+    console.log(correctKeys);
+    wordInputLength = wordInput.length;
+    currentCorrect = correctKeys;
+  }, [countDown]);
+
   return (
     <div className='typingtest'>
       <SubMenu
@@ -69,9 +77,9 @@ const TypingTest = ({ test, showStats, setCurrentSeconds, currentSeconds}) => {
         showStats={ showStats }
         currentSeconds={ currentSeconds }
       />
-      {correctKeys}
       <Text
         currentSeconds={ currentSeconds }
+        changeCountDown={ changeCountDown.bind(this) }
         wordInput={ wordInput }
         setWordInput={ setWordInput }
         countDown={ countDown }

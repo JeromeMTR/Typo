@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { VscDebugRestart } from 'react-icons/vsc';
 import randomWords from 'random-words';
 
-const Text = ({ wordInput, setWordInput, startTest, currentSeconds, setCorrectKeys }) => {
+const Text = ({ wordInput, setWordInput, startTest, currentSeconds, setCorrectKeys, changeCountDown }) => {
   const [randomText, setRandomText] = useState();
 
   const start = (value) => {
@@ -17,7 +18,6 @@ const Text = ({ wordInput, setWordInput, startTest, currentSeconds, setCorrectKe
         correct++;
       }
     }
-    console.log('this is correct',correct);
     return setCorrectKeys(correct);
   };
 
@@ -63,11 +63,18 @@ const Text = ({ wordInput, setWordInput, startTest, currentSeconds, setCorrectKe
           return <span key={i} style={{color: textColor}}>{char}</span>;
         })}
       </p>
-      <input
-        className='textbox'
-        onChange={(e) => start(e.target.value)}
-        value={ wordInput }
-      />
+      <div>
+        <input
+          className='textbox'
+          onChange={(e) => start(e.target.value)}
+          value={ wordInput }
+        />
+        <button
+          onClick={(e) => changeCountDown(e, currentSeconds)}
+        >
+          <VscDebugRestart />
+        </button>
+      </div>
     </div>
   );
 };
@@ -75,6 +82,7 @@ const Text = ({ wordInput, setWordInput, startTest, currentSeconds, setCorrectKe
 Text.propTypes = {
   startTest: PropTypes.func.isRequired,
   setWordInput: PropTypes.func.isRequired,
+  changeCountDown: PropTypes.func.isRequired,
   setCorrectKeys: PropTypes.func.isRequired,
   wordInput: PropTypes.string.isRequired,
   currentSeconds: PropTypes.number.isRequired
