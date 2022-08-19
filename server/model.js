@@ -10,7 +10,7 @@ module.exports = {
     return query(text);
   },
   readMostRecent() {
-    const text = 'SELECT * FROM scores ORDER BY date_time DESC LIMIT 5';
+    const text = 'SELECT * FROM scores ORDER BY id DESC LIMIT 5';
     return query(text);
   },
   insertScore({wpm, accuracy, date}) {
