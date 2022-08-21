@@ -20,7 +20,7 @@
 ## Project Overview
 > Full Stack web application to track and store wpm data
 
-> Typer has the options to toggle time selection from 15, 30, 60 seconds
+> Typer has the options to toggle time options from 15, 30, 60 seconds
 
 > Typer can toggle between test and score options displaying High Score, Average, Top Three & Most Recent
 
