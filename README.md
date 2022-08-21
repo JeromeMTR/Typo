@@ -18,7 +18,7 @@
 ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white)
 
 ## Project Overview
-> Full Stack web applicastion to track and store wpm data
+> Full Stack web application to track and store wpm data
 
 > Typer has the options to toggle time selection from 15, 30, 60 seconds
 
