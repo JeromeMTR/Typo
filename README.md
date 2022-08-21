@@ -27,3 +27,7 @@
 # Typo Demonstration
 
 ![Typo Demo](https://imgur.com/AzSg3WQ.gif)
+
+15 seconds           |  30 seconds |  60 seconds
+:-------------------------:|:-------------------------:|:-------------------------:
+![15](/README/15seconds.png)  |  ![30](/README/30seconds.png) | ![60](/README/60seconds.png)
