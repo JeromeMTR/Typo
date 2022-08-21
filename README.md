@@ -31,3 +31,11 @@
 15 seconds           |  30 seconds |  60 seconds
 :-------------------------:|:-------------------------:|:-------------------------:
 ![15](/README/15seconds.png)  |  ![30](/README/30seconds.png) | ![60](/README/60seconds.png)
+
+# Contributor
+
+### Jerome Rodriguez
+
+[![LinkedIn](https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/jeromemtrodriguez/)
+
+[![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/JeromeMTR)
