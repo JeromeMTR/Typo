@@ -39,7 +39,7 @@ $ npm run client-dev
 - Create a .env file based on example.env
 - Copy and Paste everything from example.env to .env
 - replace text in with custom db setup
-### Step 4
+### Step 3
 - Setup Database 
 ### Step 4
 - Open http://localhost:3000
