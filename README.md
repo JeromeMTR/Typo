@@ -24,6 +24,26 @@
 
 > Typer can toggle between test and score options displaying High Score, Average, Top Three & Most Recent
 
+## Installation & Setup
+
+### Step 1
+```
+$ git clone https://github.com/JeromeMTR/Typo.git
+$ cd Typo
+$ npm install
+$ npm run build
+$ npm run server-dev
+$ npm run client-dev
+```
+### Step 2
+- Create a .env file based on example.env
+- Copy and Paste everything from example.env to .env
+- replace text in with custom db setup
+### Step 4
+- Setup Database 
+### Step 4
+- Open http://localhost:3000
+
 # Typo Demonstration
 
 ![Typo Demo](https://imgur.com/AzSg3WQ.gif)
