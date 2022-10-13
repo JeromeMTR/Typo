@@ -44,7 +44,7 @@ $ npm run client-dev
 ### Step 4
 - Open http://localhost:3000
 
-# Typo Demonstration
+# Typo Demo
 
 ![Typo Demo](https://imgur.com/AzSg3WQ.gif)
 
